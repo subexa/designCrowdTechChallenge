@@ -11,9 +11,9 @@ describe("Search templates tests", () => {
   });
 
   it("should enter search term and generate results", async () => {
-    searchTemplatePage.searchInput.clear().type("Tech Challenge");
+    searchTemplatePage.searchInput.clear().type("Tech");
     searchTemplatePage.searchButton.click();
-    searchTemplatePage.verifySearchResults("Tech Challenge");
+    searchTemplatePage.verifySearchResults("Tech");
   });
 
   it("should filter results by category", () => {
