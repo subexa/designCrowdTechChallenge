@@ -20,6 +20,10 @@ export class SearchTemplatesPage {
     return cy.get(".masonry-item");
   }
 
+  get selectDesignModalHeader() {
+    return cy.findByRole("heading", { level: 2 });
+  }
+
   getCategoryFilterCheckbox(category: string) {
     return cy.findByRole("checkbox", { name: category });
   }

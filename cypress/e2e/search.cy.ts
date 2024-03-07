@@ -34,4 +34,11 @@ describe("Search templates tests", () => {
         });
     });
   });
+
+  it("selects a template", () => {
+    searchTemplatePage.masonryItem.first().click();
+    searchTemplatePage.selectDesignModalHeader.invoke("text").should((elem) => {
+      expect("Select a design type").to.eq(elem.trim());
+    });
+  });
 });
