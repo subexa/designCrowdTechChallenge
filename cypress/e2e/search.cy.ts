@@ -10,7 +10,7 @@ describe("Search templates tests", () => {
     cy.visit(path);
   });
 
-  it("should enter search term and generate results", async () => {
+  it("should enter search term and generate results", () => {
     const searchTerm = testData.searchTerm;
     searchTemplatePage.searchInput.clear().type(searchTerm);
     searchTemplatePage.searchButton.click();
