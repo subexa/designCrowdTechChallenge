@@ -15,4 +15,23 @@ describe("Search templates tests", () => {
     searchTemplatePage.searchButton.click();
     searchTemplatePage.verifySearchResults("Tech Challenge");
   });
+
+  it("should filter results by category", () => {
+    const instagramFilters = [
+      "Instagram Post",
+      "Instagram Story",
+      "Instagram Reel",
+    ];
+    searchTemplatePage
+      .getCategoryFilterCheckbox("Check Minus Instagram Check Minus Instagram")
+      .click({ force: true });
+    searchTemplatePage.masonryItem.each((item) => {
+      cy.wrap(item)
+        .findByRole("listitem")
+        .invoke("text")
+        .should((elem) => {
+          expect(instagramFilters).to.contain(elem.trim());
+        });
+    });
+  });
 });

@@ -16,6 +16,14 @@ export class SearchTemplatesPage {
     return cy.get("[data-test-template-masonry]");
   }
 
+  get masonryItem() {
+    return cy.get(".masonry-item");
+  }
+
+  getCategoryFilterCheckbox(category: string) {
+    return cy.findByRole("checkbox", { name: category });
+  }
+
   verifySearchResults(searchTerm: string) {
     this.searchResultsHeader.should("contain.text", `${searchTerm} Templates`);
     this.templateMasonry
