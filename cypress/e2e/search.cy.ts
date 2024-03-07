@@ -1,7 +1,7 @@
 import { SearchTemplatesPage } from "../pages/searchTemplatePage";
+import * as testData from "../fixtures/searchTestData.json";
 
-const path =
-  "/maker/mydesigns/logodrafts/e937196b-fef2-4a43-892e-1bacfd5d9cb2/templatetypes?searchTerm=Tech%20Challenge";
+const path = testData.path;
 
 const searchTemplatePage = new SearchTemplatesPage();
 
@@ -11,19 +11,17 @@ describe("Search templates tests", () => {
   });
 
   it("should enter search term and generate results", async () => {
-    searchTemplatePage.searchInput.clear().type("Tech");
+    const searchTerm = testData.searchTerm;
+    searchTemplatePage.searchInput.clear().type(searchTerm);
     searchTemplatePage.searchButton.click();
-    searchTemplatePage.verifySearchResults("Tech");
+    searchTemplatePage.verifySearchResults(searchTerm);
   });
 
   it("should filter results by category", () => {
-    const instagramFilters = [
-      "Instagram Post",
-      "Instagram Story",
-      "Instagram Reel",
-    ];
+    const instagramFilters = testData.instagramFilters;
+    const instagramCheckBoxName = testData.instagramCheckBoxName;
     searchTemplatePage
-      .getCategoryFilterCheckbox("Check Minus Instagram Check Minus Instagram")
+      .getCategoryFilterCheckbox(instagramCheckBoxName)
       .click({ force: true });
     searchTemplatePage.masonryItem.each((item) => {
       cy.wrap(item)
